@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leenath Nayeem - OS Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-mode">
+    <!-- Desktop Environment -->
+    <div class="desktop">
+        <!-- Taskbar (Dock) -->
+        <div class="taskbar">
+            <div class="taskbar-left">
+                <button class="start-button" id="startBtn" title="Launchpad">
+                    <i class="fab fa-apple start-icon"></i>
+                </button>
+                <div class="open-windows" id="openWindows"></div>
+            </div>
+            <div class="taskbar-right">
+                <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <div class="clock" id="clock">00:00</div>
+            </div>
+        </div>
+
+        <!-- Start Menu (Launchpad) -->
+        <div class="start-menu" id="startMenu">
+            <div class="start-menu-header">
+                <div class="user-avatar"><i class="fas fa-user"></i></div>
+                <div class="user-name">Leenath Nayeem</div>
+                <div class="user-status">IT Student | HND in Information Technology</div>
+            </div>
+            <div class="start-menu-items">
+                <button class="menu-item" data-window="about" title="About Me">
+                    <span class="menu-icon"><i class="fas fa-circle-user"></i></span>
+                    <span>About</span>
+                </button>
+                <button class="menu-item" data-window="education" title="Education">
+                    <span class="menu-icon"><i class="fas fa-graduation-cap"></i></span>
+                    <span>Education</span>
+                </button>
+                <button class="menu-item" data-window="skills" title="Skills">
+                    <span class="menu-icon"><i class="fas fa-laptop"></i></span>
+                    <span>Skills</span>
+                </button>
+                <button class="menu-item" data-window="projects" title="Projects">
+                    <span class="menu-icon"><i class="fas fa-rocket"></i></span>
+                    <span>Projects</span>
+                </button>
+                <button class="menu-item" data-window="achievements" title="Achievements">
+                    <span class="menu-icon"><i class="fas fa-trophy"></i></span>
+                    <span>Achievements</span>
+                </button>
+                <button class="menu-item" data-window="contact" title="Contact">
+                    <span class="menu-icon"><i class="fas fa-envelope"></i></span>
+                    <span>Contact</span>
+                </button>
+                <button class="menu-item" id="resumeBtn" title="Download Resume">
+                    <span class="menu-icon"><i class="fas fa-file"></i></span>
+                    <span>Resume</span>
+                </button>
+                <button class="menu-item" data-window="wallpaper" title="Wallpapers">
+                    <span class="menu-icon"><i class="fas fa-palette"></i></span>
+                    <span>Wallpaper</span>
+                </button>
+                <button class="menu-item" style="opacity: 0; pointer-events: none;">
+                    <span class="menu-icon"> </span>
+                    <span> </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Animated Background Particles -->
+        <div class="particle-container" id="particleContainer"></div>
+
+        <!-- Desktop Widgets -->
+        <div class="desktop-widgets">
+            <div class="widget system-widget">
+                <div class="widget-header">
+                    <span class="widget-title">System Info</span>
+                </div>
+                <div class="widget-body">
+                    <div class="info-line"><span class="label">Status:</span><span class="status-indicator online"></span> Seeking Internship</div>
+                    <div class="info-line"><span class="label">GPA:</span><span>3.7/4.0</span></div>
+                    <div class="info-line"><span class="label">Skills:</span><span>Full Stack Dev</span></div>
+                </div>
+            </div>
+            <div class="widget time-widget">
+                <div class="widget-header">
+                    <span class="widget-title">Local Time</span>
+                </div>
+                <div class="widget-body">
+                    <div class="time-display" id="widgetTime">12:00</div>
+                    <div class="date-display" id="widgetDate">Monday</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="desktop-icon draggable" data-window="about">
+                <div class="icon-image"><i class="fas fa-circle-user"></i></div>
+                <div class="icon-label">About Me</div>
+            </div>
+            <div class="desktop-icon draggable" data-window="projects">
+                <div class="icon-image"><i class="fas fa-rocket"></i></div>
+                <div class="icon-label">Projects</div>
+            </div>
+            <div class="desktop-icon draggable" data-window="contact">
+                <div class="icon-image"><i class="fas fa-envelope"></i></div>
+                <div class="icon-label">Contact</div>
+            </div>
+        </div>
+
+        <!-- Windows Container -->
+        <div class="windows-container" id="windowsContainer">
+            
+            <!-- About Window -->
+            <div class="window" id="about-window" data-window-id="about">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <button class="control-btn close"></button>
+                        <button class="control-btn minimize"></button>
+                        <button class="control-btn maximize"></button>
+                    </div>
+                    <div class="window-title">
+                        <span class="window-icon"><i class="fas fa-circle-user"></i></span>
+                        About Me
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="terminal-output">
+                        <div class="terminal-text">
+                            <p>Hello! I'm Leenath Nayeem, an IT student who has completed the Higher National Diploma in Information Technology (HNDIT).</p>
+                            <p>I'm passionate about building practical web applications and solving real-world problems through technology. Currently, I'm actively seeking an internship to gain practical industry experience and contribute to real-world projects while learning from professionals.</p>
+                            <p>I have a strong foundation in web development, data structures, and software engineering. My enthusiasm drives me to continuously improve my skills and stay updated with the latest technologies in the industry.</p>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <div class="stat-value">3.7</div>
+                                <div class="stat-label">GPA</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">15+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">2025</div>
+                                <div class="stat-label">Graduation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Window -->
+            <div class="window" id="education-window" data-window-id="education">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <button class="control-btn close"></button>
+                        <button class="control-btn minimize"></button>
+                        <button class="control-btn maximize"></button>
+                    </div>
+                    <div class="window-title">
+                        <span class="window-icon"><i class="fas fa-graduation-cap"></i></span>
+                        Education
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="education-card">
+                        <div class="edu-header">
+                            <h3>HND in Information Technology</h3>
+                            <span class="edu-date">2023 - 2025</span>
+                        </div>
+                        <p class="edu-institution">SLIATE, Kandy</p>
+                        <div class="edu-details">
+                            <p><strong>GPA:</strong> 3.7/4.0</p>
+                            <p><strong>Honors:</strong> Dean's List (Fall 2023, Spring 2024)</p>
+                            <p><strong>Relevant Coursework:</strong></p>
+                            <ul>
+                                <li>Data Structures & Algorithms</li>
+                                <li>Web Development</li>
+                                <li>Database Systems</li>
+                                <li>Software Engineering</li>
+                                <li>Object-Oriented Programming</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Window -->
+            <div class="window" id="skills-window" data-window-id="skills">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <button class="control-btn close"></button>
+                        <button class="control-btn minimize"></button>
+                        <button class="control-btn maximize"></button>
+                    </div>
+                    <div class="window-title">
+                        <span class="window-icon"><i class="fas fa-laptop"></i></span>
+                        Skills
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="skills-tabs">
+                        <button class="tab-btn active" data-tab="frontend">Frontend</button>
+                        <button class="tab-btn" data-tab="backend">Backend</button>
+                        <button class="tab-btn" data-tab="tools">Tools</button>
+                    </div>
+                    <div class="tab-content active" id="frontend">
+                        <div class="skill-bars">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>HTML/CSS</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>JavaScript</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>React</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Tailwind CSS</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="backend">
+                        <div class="skill-bars">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Node.js</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Python</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>PostgreSQL</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>REST APIs</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tools">
+                        <div class="skill-bars">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Git & GitHub</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>VS Code</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Figma</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>AWS Basics</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Window -->
+            <div class="window" id="projects-window" data-window-id="projects">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <button class="control-btn close"></button>
+                        <button class="control-btn minimize"></button>
+                        <button class="control-btn maximize"></button>
+                    </div>
+                    <div class="window-title">
+                        <span class="window-icon"><i class="fas fa-rocket"></i></span>
+                        Projects
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="projects-list">
+                        <div class="project-item">
+                            <div class="project-folder"><i class="fas fa-folder"></i></div>
+                            <div class="project-info">
+                                <h4>Task Management App</h4>
+                                <p>A simple task management application to organize daily activities and deadlines.</p>
+                                <div class="project-tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>Node.js</span>
+                                </div>
+                                <a href="#" class="project-link-btn">View Project →</a>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-folder"><i class="fas fa-folder"></i></div>
+                            <div class="project-info">
+                                <h4>Weather Dashboard</h4>
+                                <p>A beginner-friendly weather application using a public API with real-time data.</p>
+                                <div class="project-tech">
+                                    <span>JavaScript</span>
+                                    <span>API Integration</span>
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                </div>
+                                <a href="#" class="project-link-btn">View Project →</a>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-folder"><i class="fas fa-folder"></i></div>
+                            <div class="project-info">
+                                <h4>Expense Tracker</h4>
+                                <p>A simple personal finance tracker to monitor daily expenses and manage budget.</p>
+                                <div class="project-tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                </div>
+                                <a href="#" class="project-link-btn">View Project →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Window -->
+            <div class="window" id="achievements-window" data-window-id="achievements">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <button class="control-btn close"></button>
+                        <button class="control-btn minimize"></button>
+                        <button class="control-btn maximize"></button>
+                    </div>
+                    <div class="window-title">
+                        <span class="window-icon"><i class="fas fa-trophy"></i></span>
+                        Achievements
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="achievements-grid">
+                        <div class="achievement-badge">
+                            <div class="badge-icon"><i class="fas fa-medal"></i></div>
+                            <h4>Dean's List</h4>
+                            <p>Fall 2023, Spring 2024</p>
+                        </div>
+                        <div class="achievement-badge">
+                            <div class="badge-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <h4>HND Completion</h4>
+                            <p>Information Technology 2025</p>
+                        </div>
+                        <div class="achievement-badge">
+                            <div class="badge-icon"><i class="fas fa-code"></i></div>
+                            <h4>Full Stack Developer</h4>
+                            <p>Web Development Proficiency</p>
+                        </div>
+                        <div class="achievement-badge">
+                            <div class="badge-icon"><i class="fas fa-star"></i></div>
+                            <h4>3.7 GPA</h4>
+                            <p>Academic Excellence</p>
+                        </div>
+                        <div class="achievement-badge">
+                            <div class="badge-icon"><i class="fas fa-database"></i></div>
+                            <h4>Database Specialist</h4>
+                            <p>SQL & Data Management</p>
+                        </div>
+                        <div class="achievement-badge">
+                            <div class="badge-icon"><i class="fas fa-cogs"></i></div>
+                            <h4>Software Engineer</h4>
+                            <p>Engineering Principles Mastery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Window -->
+            <div class="window" id="contact-window" data-window-id="contact">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <button class="control-btn close"></button>
+                        <button class="control-btn minimize"></button>
+                        <button class="control-btn maximize"></button>
+                    </div>
+                    <div class="window-title">
+                        <span class="window-icon"><i class="fas fa-envelope"></i></span>
+                        Contact
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="contact-container">
+                        <h3>Let's Connect!</h3>
+                        <p>I'm actively seeking internship opportunities for Summer 2026. Feel free to reach out!</p>
+                        <div class="contact-methods">
+                            <a href="mailto:leenathnayeem@gmail.com" class="contact-method">
+                                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                                <div>
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value">leenathnayeem@gmail.com</div>
+                                </div>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="contact-method">
+                                <span class="contact-icon"><i class="fab fa-github"></i></span>
+                                <div>
+                                    <div class="contact-label">GitHub</div>
+                                    <div class="contact-value">github.com/leenath</div>
+                                </div>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" class="contact-method">
+                                <span class="contact-icon"><i class="fab fa-linkedin"></i></span>
+                                <div>
+                                    <div class="contact-label">LinkedIn</div>
+                                    <div class="contact-value">linkedin.com/in/leenath</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wallpaper Window -->
+            <div class="window" id="wallpaper-window" data-window-id="wallpaper">
+                <div class="window-header">
+                    <div class="window-title">
+                        <span class="window-icon"><i class="fas fa-palette"></i></span>
+                        Wallpapers
+                    </div>
+                    <div class="window-controls">
+                        <button class="control-btn close"></button>
+                        <button class="control-btn minimize"></button>
+                        <button class="control-btn maximize"></button>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <h3 style="margin-bottom: 1.5rem;">Choose Your Wallpaper</h3>
+                    <div class="wallpaper-selector" id="wallpaperSelector">
+                        <div class="wallpaper-option active" data-wallpaper="default" title="macOS Dark" style="background: linear-gradient(135deg, #1a1a2e 0%, #0a0e27 50%, #0d0915 100%);"></div>
+                        <div class="wallpaper-option" data-wallpaper="light" title="macOS Light" style="background: linear-gradient(135deg, #f5f5f7 0%, #e8e8eb 50%, #ddd 100%);"></div>
+                        <div class="wallpaper-option" data-wallpaper="sunset" title="Sunset" style="background: linear-gradient(135deg, #ff6b6b 0%, #ff9a56 50%, #ffd93d 100%);"></div>
+                        <div class="wallpaper-option" data-wallpaper="ocean" title="Ocean" style="background: linear-gradient(135deg, #0a4d68 0%, #088395 50%, #05bfdb 100%);"></div>
+                        <div class="wallpaper-option" data-wallpaper="forest" title="Forest" style="background: linear-gradient(135deg, #1b3a34 0%, #2d6a4f 50%, #52b788 100%);"></div>
+                        <div class="wallpaper-option" data-wallpaper="midnight" title="Midnight" style="background: linear-gradient(135deg, #0f1419 0%, #1a1f36 50%, #16213e 100%);"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Welcome Screen (shows on load) -->
+        <div class="welcome-screen" id="welcomeScreen">
+            <div class="welcome-content">
+                <div class="boot-sequence">
+                    <div class="boot-logo"><i class="fab fa-apple"></i></div>
+                    <h1>Leenath Nayeem Portfolio</h1>
+                    <div class="boot-text">macOS Style v1.0</div>
+                    <div class="loading-bar">
+                        <div class="loading-progress"></div>
+                    </div>
+                    <div class="boot-message">Launching portfolio...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Watermark -->
+        <div class="footer-watermark">
+            <p>© 2026 Leenath Nayeem. Built with HTML, CSS & JavaScript.</p>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
